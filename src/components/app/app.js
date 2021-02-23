@@ -1,34 +1,50 @@
-import React from 'react';
-import {Col, Row, Container} from 'reactstrap';
+import React, { Component } from 'react';
+import { Col, Row, Container } from 'reactstrap';
 import Header from '../header';
 import RandomChar from '../randomChar';
 import ItemList from '../itemList';
 import CharDetails from '../charDetails';
+import './app.css';
 
 
-const App = () => {
-    return (
-        <> 
-            <Container>
-                <Header />
-            </Container>
-            <Container>
-                <Row>
-                    <Col lg={{size: 5, offset: 0}}>
-                        <RandomChar/>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col md='6'>
-                        <ItemList />
-                    </Col>
-                    <Col md='6'>
-                        <CharDetails />
-                    </Col>
-                </Row>
-            </Container>
-        </>
-    );
-};
+export default class App extends Component {
+    state = {
+        isShow: true
+    }
 
-export default App;
+    toggleRandomChar = () => {
+        this.setState((state) => {
+            return {
+                isShow: !state.isShow
+            }
+        })
+    }
+
+    render() {
+        const randomChar = this.state.isShow ? <RandomChar /> : null
+
+        return (
+            <>
+                <Container>
+                    <Header />
+                </Container>
+                <Container>
+                    <Row className='random-char'>
+                        <Col lg={{ size: 5, offset: 0 }}>
+                            {randomChar}
+                        </Col>
+                    </Row>
+                    <button className="toggle" onClick={this.toggleRandomChar}>Toggle random char</button>
+                    <Row className="mt-5">
+                        <Col md='6'>
+                            <ItemList />
+                        </Col>
+                        <Col md='6'>
+                            <CharDetails />
+                        </Col>
+                    </Row>
+                </Container>
+            </>
+        );
+    };
+}

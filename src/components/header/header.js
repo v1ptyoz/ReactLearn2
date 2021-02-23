@@ -1,51 +1,26 @@
 import React from 'react';
-import styled from 'styled-components';
-
-const HeaderBlock = styled.div`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 80px;
-`;
-
-const HeaderTitle = styled.h3`
-    font-size: 24px;
-    color: #fff;
-    margin: 0;
-`;
-
-const HeaderLinks = styled.ul`
-    display: flex;
-    margin: 0;
-    align-items: center;
-    color: #fff;
-    list-style-type: none;
-    li {
-        margin-right: 20px;
-        font-size: 18px;
-    }
-`;
+import './header.css';
 
 const Header = () => {
     return (
-        <HeaderBlock>
-            <HeaderTitle>
-                <a href="#">
+        <div className="header">
+            <div className="header__title">
+                <a href="#0">
                 Game of Thrones DB
                 </a>
-            </HeaderTitle>
-            <HeaderLinks>
+            </div>
+            <div className="header__links">
                 <li>
-                    <a href="#">Characters</a>
+                    <a href="#1">Characters</a>
                 </li>
                 <li>
-                    <a href="#">Houses</a>
+                    <a href="#2">Houses</a>
                 </li>
                 <li>
-                    <a href="#">Books</a>   
+                    <a href="#3">Books</a>   
                 </li>
-            </HeaderLinks>
-        </HeaderBlock>
+            </div>
+        </div>
     );
 };
 
